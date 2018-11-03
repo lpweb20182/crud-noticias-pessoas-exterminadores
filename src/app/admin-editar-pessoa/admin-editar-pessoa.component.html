@@ -1,0 +1,26 @@
+<h1>Editar pessoa</h1>
+<br>
+<div *ngIf="pessoa">
+<form class="mt-1" #edicao="ngForm" (submit)="editar(pessoa.id, pessoa.nome, pessoa.email)">
+  <div *ngIf="update_ok" class="alert alert-success">
+    Pessoa atualizada com sucesso!
+  </div>
+  <div *ngIf="update_erro" class="alert alert-warning">
+    Não foi possível atualizar a pessoa. Tente novamente dentro de instantes.
+  </div>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" id="nome" [(ngModel)]="pessoa.nome" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input name="email" type="email" class="form-control" name="email" id="email" [(ngModel)]="pessoa.email" required>
+  </div> 
+  <div>
+    <button class="btn btn-success">Atualizar</button>
+  </div>
+</form>
+</div>
+<div class="alert alert-warning" *ngIf="pessoa_erro">
+  Não foi possível obter a pessoa solicitada.
+</div>
