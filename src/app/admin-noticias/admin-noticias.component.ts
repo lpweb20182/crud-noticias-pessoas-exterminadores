@@ -9,10 +9,26 @@ import { Router } from '@angular/router';
 })
 export class AdminNoticiasComponent implements OnInit {
   noticias$ = null;
+  excluir_ok = false;
+  excluir_erro = false;
+  
   constructor(private service: NoticiasService, private router: Router) { }
 
   ngOnInit() {
     this.noticias$ = this.service.todas();
   }
-
+  
+  excluir(noticia) {
+    if (confirm(`Tem certeza que deseja excluir essa pessoa: ${noticia.titulo} ?`)) {
+      this.service.excluir(noticia.id).subscribe(
+        noticia => {
+          this.excluir_ok = true;
+        },
+        erro => {
+          console.log(erro);
+          this.excluir_erro = true;
+        }
+      )
+    }
+  }
 }

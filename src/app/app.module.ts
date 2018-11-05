@@ -21,6 +21,7 @@ import { AdminCadastrarNoticiaComponent } from './admin-cadastrar-noticia/admin-
 import { AdminCadastrarPessoaComponent } from './admin-cadastrar-pessoa/admin-cadastrar-pessoa.component';
 import { AdminPessoasComponent } from './admin-pessoas/admin-pessoas.component';
 import { AdminEditarPessoaComponent } from './admin-editar-pessoa/admin-editar-pessoa.component';
+import { AdminEditarNoticiaComponent } from './admin-editar-noticia/admin-editar-noticia.component';
 
 const rotas: Routes = [
   { path: 'noticias/:id', component: LeitorDeNoticiaComponent, },
@@ -33,6 +34,7 @@ const rotas: Routes = [
       canActivateChild: [AutenticacaoGuard], 
       children: [
       { path: 'noticias/cadastrar', component: AdminCadastrarNoticiaComponent },
+      { path: 'noticias/editar/:id', component: AdminEditarNoticiaComponent },
       { path: 'noticias', component: AdminNoticiasComponent },
       { path: 'pessoas/cadastrar', component: AdminCadastrarPessoaComponent },
       { path: 'pessoas/editar/:id', component: AdminEditarPessoaComponent },
@@ -60,7 +62,8 @@ const rotas: Routes = [
     AdminCadastrarNoticiaComponent,
     AdminCadastrarPessoaComponent,
     AdminPessoasComponent,
-    AdminEditarPessoaComponent
+    AdminEditarPessoaComponent,
+    AdminEditarNoticiaComponent
   ],
   imports: [
     NgbModule,

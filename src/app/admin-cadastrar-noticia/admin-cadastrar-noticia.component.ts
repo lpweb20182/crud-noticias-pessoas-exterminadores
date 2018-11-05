@@ -10,7 +10,7 @@ import { AutoresService } from '../autores.service';
 export class AdminCadastrarNoticiaComponent implements OnInit {
   titulo = null;
   autores = null;
-  autor = null;
+  autor = {id: null};
   resumo = null;
   conteudo = null;
   data = null;
@@ -27,7 +27,7 @@ export class AdminCadastrarNoticiaComponent implements OnInit {
 
   salvar() {
     this.noticias_service.salvar(this.titulo, this.resumo, this.conteudo, this.autor,
-      '2018-10-29 20:00:00', false, false).subscribe(
+      this.data, this.publicada, this.destaque).subscribe(
         noticia => {
           this.salvar_ok = true;
         },
